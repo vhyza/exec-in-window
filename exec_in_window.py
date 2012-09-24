@@ -50,10 +50,6 @@ class Exec(execcmd.sublime_plugin.WindowCommand, execcmd.ProcessListener):
             print "Running " + " ".join(cmd)
             execcmd.sublime.status_message("Building")
 
-        show_panel_on_build = execcmd.sublime.load_settings("Preferences.sublime-settings").get("show_panel_on_build", True)
-        if show_panel_on_build:
-            self.window.run_command("show_panel", {"panel": "output.exec"})
-
         merged_env = env.copy()
         if self.window.active_view():
             user_env = self.window.active_view().settings().get('build_env')
