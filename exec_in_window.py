@@ -31,7 +31,7 @@ class Exec(execcmd.sublime_plugin.WindowCommand, execcmd.ProcessListener):
 
         self.output_view = self.window.open_file("Build result")
         self.output_view.set_scratch(True)
-        self.output_view.set_read_only(True)
+        self.output_view.set_read_only(False)
 
         # Default the to the current files directory if no working directory was given
         if (working_dir == "" and self.window.active_view() and self.file):
@@ -86,11 +86,9 @@ class Exec(execcmd.sublime_plugin.WindowCommand, execcmd.ProcessListener):
             return True
 
     def clear_view(self):
-        self.output_view.set_read_only(False)
         edit = self.output_view.begin_edit()
         self.output_view.erase(edit, sublime.Region(0, self.output_view.size()))
         self.output_view.end_edit(edit)
-        self.output_view.set_read_only(True)
 
     def create_temp_file(self):
         view = self.window.active_view()
@@ -127,13 +125,11 @@ class Exec(execcmd.sublime_plugin.WindowCommand, execcmd.ProcessListener):
             and self.output_view.sel()[0]
                 == execcmd.sublime.Region(self.output_view.size()))
 
-        self.output_view.set_read_only(False)
         edit = self.output_view.begin_edit()
         self.output_view.insert(edit, self.output_view.size(), str)
         if selection_was_at_end:
             self.output_view.show(self.output_view.size())
         self.output_view.end_edit(edit)
-        self.output_view.set_read_only(True)
 
     def finish(self, proc):
         if not self.quiet:
