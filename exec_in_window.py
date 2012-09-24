@@ -8,7 +8,7 @@ import os
 import tempfile
 execcmd = __import__("exec")
 
-class ExecInWindowCommand(execcmd.sublime_plugin.WindowCommand, execcmd.ProcessListener):
+class Exec(execcmd.sublime_plugin.WindowCommand, execcmd.ProcessListener):
     def run(self, cmd = [], file_regex = "", line_regex = "", working_dir = "",
             encoding = "utf-8", env = {}, quiet = False, kill = False,
             # Catches "path" and "shell"
