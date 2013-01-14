@@ -6,6 +6,7 @@ import functools
 import time
 import os
 import tempfile
+import codecs
 execcmd = __import__("exec")
 
 class ExecInWindowCommand(execcmd.sublime_plugin.WindowCommand, execcmd.ProcessListener):
@@ -98,7 +99,7 @@ class ExecInWindowCommand(execcmd.sublime_plugin.WindowCommand, execcmd.ProcessL
         filename = '%s.tmp' % view.id()
         path = os.path.join(tempfile.gettempdir(), filename)
         file = open(path, 'w')
-        file.write(content)
+        file.write(content.encode('utf-8'))
         file.close()
         return path
 
