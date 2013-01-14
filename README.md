@@ -10,6 +10,13 @@ _exec-in-window_ is modified `exec` command used in _Sublime Text 2_ build syste
 * execute *unsaved* files - based on selected syntax
 
 ## installation
+
+### Using Sublime Package Control
+
+If you are using [Sublime Package Control](http://wbond.net/sublime_packages/package_control), you can install plugin via the `Package Control: Install Package menu item`. Plugin is listed as `Exec In Window`
+
+### Using Git
+
 go to _Sublime Text_ `Packages` directory
 
 * `~/Library/Application\ Support/Sublime\ Text\ 2/Packages` on _OS X_
